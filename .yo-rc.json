@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "de.wwag.hackathon.team2",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "ww_hackathon_team2",
+    "packageName": "de.wwag.hackathon.team2",
+    "packageFolder": "de/wwag/hackathon/team2",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZjkxNjM1ODcyYzRjOTI0NmM2ZGY0NmMxZWUyNGNmYTg3ODQ0ZWM4Mjc1NjlkMGU2NjJkY2Y4NzhkMTQwMTNkYWE4YWQxYTk5YjE4OGMzMDg0YWU1YWUxMDE5Mjc2YjhjMzU2OWMzMWNlNDg1ZmQ5MjIyYmFhNjhjM2YyOGY5MTg=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1600450231383,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": ["de", "en"],
+    "blueprints": []
+  }
+}
