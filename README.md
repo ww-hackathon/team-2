@@ -1,3 +1,5 @@
+[![Build status](https://github.com/ww-hackathon/team-2/workflows/Application%20CI/badge.svg)](https://github.com/ww-hackathon/team-2/actions?query=workflow%3A%22Application+CI%22) [![sync status](https://argocd.homek8s.dev/api/badge?name=team-2-jhipster)](https://argocd.homek8s.dev/applications/team-2-jhipster)
+
 # ww_hackathon_team2
 
 This application was generated using JHipster 6.10.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.1](https://www.jhipster.tech/documentation-archive/v6.10.1).
