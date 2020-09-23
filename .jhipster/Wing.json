@@ -1,0 +1,29 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "deskgroups",
+      "otherEntityName": "deskgroup",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "wing"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "identifier",
+      "fieldType": "WingIdentifier",
+      "fieldValues": "A,B",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "changelogDate": "20200923084124",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceClass",
+  "entityTableName": "wing",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}

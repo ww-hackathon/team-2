@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="deskgroup">
+            <h2><span jhiTranslate="wwHackathonTeam2App.deskgroup.detail.title">Deskgroup</span> {{ deskgroup.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wwHackathonTeam2App.deskgroup.seats">Seats</span></dt>
+                <dd>
+                    <span>{{ deskgroup.seats }}</span>
+                </dd>
+                <dt><span jhiTranslate="wwHackathonTeam2App.deskgroup.identifier">Identifier</span></dt>
+                <dd>
+                    <span>{{ deskgroup.identifier }}</span>
+                </dd>
+                <dt><span jhiTranslate="wwHackathonTeam2App.deskgroup.availableSeats">Available Seats</span></dt>
+                <dd>
+                    <span>{{ deskgroup.availableSeats }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/deskgroup', deskgroup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

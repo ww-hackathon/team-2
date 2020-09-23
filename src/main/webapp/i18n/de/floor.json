@@ -1,0 +1,23 @@
+{
+  "wwHackathonTeam2App": {
+    "floor": {
+      "home": {
+        "title": "Floors",
+        "createLabel": "Floor erstellen",
+        "createOrEditLabel": "Floor erstellen oder bearbeiten",
+        "notFound": "No Floors found"
+      },
+      "created": "Floor erstellt mit ID {{ param }}",
+      "updated": "Floor aktualisiert mit ID {{ param }}",
+      "deleted": "Floor gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Floor {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Floor"
+      },
+      "identifier": "Identifier",
+      "wings": "Wings"
+    }
+  }
+}

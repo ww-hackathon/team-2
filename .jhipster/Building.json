@@ -1,0 +1,30 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "floors",
+      "otherEntityName": "floor",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "building"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "identifier",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "unique", "min", "max"],
+      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMax": "14"
+    }
+  ],
+  "changelogDate": "20200923085329",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceClass",
+  "entityTableName": "building",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}

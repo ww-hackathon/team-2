@@ -1,0 +1,23 @@
+{
+  "wwHackathonTeam2App": {
+    "building": {
+      "home": {
+        "title": "Buildings",
+        "createLabel": "Building erstellen",
+        "createOrEditLabel": "Building erstellen oder bearbeiten",
+        "notFound": "No Buildings found"
+      },
+      "created": "Building erstellt mit ID {{ param }}",
+      "updated": "Building aktualisiert mit ID {{ param }}",
+      "deleted": "Building gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Building {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Building"
+      },
+      "identifier": "Identifier",
+      "floors": "Floors"
+    }
+  }
+}

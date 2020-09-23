@@ -1,0 +1,23 @@
+{
+  "wwHackathonTeam2App": {
+    "wing": {
+      "home": {
+        "title": "Wings",
+        "createLabel": "Wing erstellen",
+        "createOrEditLabel": "Wing erstellen oder bearbeiten",
+        "notFound": "No Wings found"
+      },
+      "created": "Wing erstellt mit ID {{ param }}",
+      "updated": "Wing aktualisiert mit ID {{ param }}",
+      "deleted": "Wing gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Wing {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Wing"
+      },
+      "identifier": "Identifier",
+      "deskgroups": "Deskgroups"
+    }
+  }
+}

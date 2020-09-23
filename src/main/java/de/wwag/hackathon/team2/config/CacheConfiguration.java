@@ -48,6 +48,13 @@ public class CacheConfiguration {
             createCache(cm, de.wwag.hackathon.team2.domain.User.class.getName());
             createCache(cm, de.wwag.hackathon.team2.domain.Authority.class.getName());
             createCache(cm, de.wwag.hackathon.team2.domain.User.class.getName() + ".authorities");
+            createCache(cm, de.wwag.hackathon.team2.domain.Deskgroup.class.getName());
+            createCache(cm, de.wwag.hackathon.team2.domain.Wing.class.getName());
+            createCache(cm, de.wwag.hackathon.team2.domain.Wing.class.getName() + ".deskgroups");
+            createCache(cm, de.wwag.hackathon.team2.domain.Floor.class.getName());
+            createCache(cm, de.wwag.hackathon.team2.domain.Floor.class.getName() + ".wings");
+            createCache(cm, de.wwag.hackathon.team2.domain.Building.class.getName());
+            createCache(cm, de.wwag.hackathon.team2.domain.Building.class.getName() + ".floors");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,24 @@
+{
+  "wwHackathonTeam2App": {
+    "deskgroup": {
+      "home": {
+        "title": "Deskgroups",
+        "createLabel": "Deskgroup erstellen",
+        "createOrEditLabel": "Deskgroup erstellen oder bearbeiten",
+        "notFound": "No Deskgroups found"
+      },
+      "created": "Deskgroup erstellt mit ID {{ param }}",
+      "updated": "Deskgroup aktualisiert mit ID {{ param }}",
+      "deleted": "Deskgroup gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Deskgroup {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Deskgroup"
+      },
+      "seats": "Seats",
+      "identifier": "Identifier",
+      "availableSeats": "Available Seats"
+    }
+  }
+}
