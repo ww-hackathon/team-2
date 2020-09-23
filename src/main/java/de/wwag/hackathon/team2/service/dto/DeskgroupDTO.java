@@ -17,9 +17,8 @@ public class DeskgroupDTO implements Serializable {
     @NotNull
     private Integer identifier;
 
-    @NotNull
-    private Integer availableSeats;
 
+    private Long wingId;
     
     public Long getId() {
         return id;
@@ -45,12 +44,12 @@ public class DeskgroupDTO implements Serializable {
         this.identifier = identifier;
     }
 
-    public Integer getAvailableSeats() {
-        return availableSeats;
+    public Long getWingId() {
+        return wingId;
     }
 
-    public void setAvailableSeats(Integer availableSeats) {
-        this.availableSeats = availableSeats;
+    public void setWingId(Long wingId) {
+        this.wingId = wingId;
     }
 
     @Override
@@ -77,7 +76,7 @@ public class DeskgroupDTO implements Serializable {
             "id=" + getId() +
             ", seats=" + getSeats() +
             ", identifier=" + getIdentifier() +
-            ", availableSeats=" + getAvailableSeats() +
+            ", wingId=" + getWingId() +
             "}";
     }
 }

@@ -28,6 +28,14 @@
                         </small>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wwHackathonTeam2App.floor.building" for="field_building">Building</label>
+                    <select class="form-control" id="field_building" name="building" formControlName="buildingId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="buildingOption.id" *ngFor="let buildingOption of buildings; trackBy: trackById">{{ buildingOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

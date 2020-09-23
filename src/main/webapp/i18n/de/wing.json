@@ -17,7 +17,8 @@
         "title": "Wing"
       },
       "identifier": "Identifier",
-      "deskgroups": "Deskgroups"
+      "deskgroup": "Deskgroup",
+      "floor": "Floor"
     }
   }
 }

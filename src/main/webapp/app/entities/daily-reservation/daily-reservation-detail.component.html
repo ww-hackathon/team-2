@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dailyReservation">
+            <h2><span jhiTranslate="wwHackathonTeam2App.dailyReservation.detail.title">Daily Reservation</span> {{ dailyReservation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wwHackathonTeam2App.dailyReservation.date">Date</span></dt>
+                <dd>
+                    <span>{{ dailyReservation.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="wwHackathonTeam2App.dailyReservation.deskgroup">Deskgroup</span></dt>
+                <dd>
+                    <div *ngIf="dailyReservation.deskgroupId">
+                        <a [routerLink]="['/deskgroup', dailyReservation.deskgroupId, 'view']">{{ dailyReservation.deskgroupId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wwHackathonTeam2App.dailyReservation.user">User</span></dt>
+                <dd>
+                    {{ dailyReservation.userId }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/daily-reservation', dailyReservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

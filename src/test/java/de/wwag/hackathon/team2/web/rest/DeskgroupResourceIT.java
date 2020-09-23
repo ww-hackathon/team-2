@@ -38,9 +38,6 @@ public class DeskgroupResourceIT {
     private static final Integer DEFAULT_IDENTIFIER = 1;
     private static final Integer UPDATED_IDENTIFIER = 2;
 
-    private static final Integer DEFAULT_AVAILABLE_SEATS = 1;
-    private static final Integer UPDATED_AVAILABLE_SEATS = 2;
-
     @Autowired
     private DeskgroupRepository deskgroupRepository;
 
@@ -67,8 +64,7 @@ public class DeskgroupResourceIT {
     public static Deskgroup createEntity(EntityManager em) {
         Deskgroup deskgroup = new Deskgroup()
             .seats(DEFAULT_SEATS)
-            .identifier(DEFAULT_IDENTIFIER)
-            .availableSeats(DEFAULT_AVAILABLE_SEATS);
+            .identifier(DEFAULT_IDENTIFIER);
         return deskgroup;
     }
     /**
@@ -80,8 +76,7 @@ public class DeskgroupResourceIT {
     public static Deskgroup createUpdatedEntity(EntityManager em) {
         Deskgroup deskgroup = new Deskgroup()
             .seats(UPDATED_SEATS)
-            .identifier(UPDATED_IDENTIFIER)
-            .availableSeats(UPDATED_AVAILABLE_SEATS);
+            .identifier(UPDATED_IDENTIFIER);
         return deskgroup;
     }
 
@@ -107,7 +102,6 @@ public class DeskgroupResourceIT {
         Deskgroup testDeskgroup = deskgroupList.get(deskgroupList.size() - 1);
         assertThat(testDeskgroup.getSeats()).isEqualTo(DEFAULT_SEATS);
         assertThat(testDeskgroup.getIdentifier()).isEqualTo(DEFAULT_IDENTIFIER);
-        assertThat(testDeskgroup.getAvailableSeats()).isEqualTo(DEFAULT_AVAILABLE_SEATS);
     }
 
     @Test
@@ -173,26 +167,6 @@ public class DeskgroupResourceIT {
 
     @Test
     @Transactional
-    public void checkAvailableSeatsIsRequired() throws Exception {
-        int databaseSizeBeforeTest = deskgroupRepository.findAll().size();
-        // set the field null
-        deskgroup.setAvailableSeats(null);
-
-        // Create the Deskgroup, which fails.
-        DeskgroupDTO deskgroupDTO = deskgroupMapper.toDto(deskgroup);
-
-
-        restDeskgroupMockMvc.perform(post("/api/deskgroups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(deskgroupDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Deskgroup> deskgroupList = deskgroupRepository.findAll();
-        assertThat(deskgroupList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllDeskgroups() throws Exception {
         // Initialize the database
         deskgroupRepository.saveAndFlush(deskgroup);
@@ -203,8 +177,7 @@ public class DeskgroupResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(deskgroup.getId().intValue())))
             .andExpect(jsonPath("$.[*].seats").value(hasItem(DEFAULT_SEATS)))
-            .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER)))
-            .andExpect(jsonPath("$.[*].availableSeats").value(hasItem(DEFAULT_AVAILABLE_SEATS)));
+            .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER)));
     }
     
     @Test
@@ -219,8 +192,7 @@ public class DeskgroupResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(deskgroup.getId().intValue()))
             .andExpect(jsonPath("$.seats").value(DEFAULT_SEATS))
-            .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER))
-            .andExpect(jsonPath("$.availableSeats").value(DEFAULT_AVAILABLE_SEATS));
+            .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER));
     }
     @Test
     @Transactional
@@ -244,8 +216,7 @@ public class DeskgroupResourceIT {
         em.detach(updatedDeskgroup);
         updatedDeskgroup
             .seats(UPDATED_SEATS)
-            .identifier(UPDATED_IDENTIFIER)
-            .availableSeats(UPDATED_AVAILABLE_SEATS);
+            .identifier(UPDATED_IDENTIFIER);
         DeskgroupDTO deskgroupDTO = deskgroupMapper.toDto(updatedDeskgroup);
 
         restDeskgroupMockMvc.perform(put("/api/deskgroups")
@@ -259,7 +230,6 @@ public class DeskgroupResourceIT {
         Deskgroup testDeskgroup = deskgroupList.get(deskgroupList.size() - 1);
         assertThat(testDeskgroup.getSeats()).isEqualTo(UPDATED_SEATS);
         assertThat(testDeskgroup.getIdentifier()).isEqualTo(UPDATED_IDENTIFIER);
-        assertThat(testDeskgroup.getAvailableSeats()).isEqualTo(UPDATED_AVAILABLE_SEATS);
     }
 
     @Test

@@ -5,8 +5,9 @@ export interface IFloor {
   id?: number;
   identifier?: FloorIdentifier;
   wings?: IWing[];
+  buildingId?: number;
 }
 
 export class Floor implements IFloor {
-  constructor(public id?: number, public identifier?: FloorIdentifier, public wings?: IWing[]) {}
+  constructor(public id?: number, public identifier?: FloorIdentifier, public wings?: IWing[], public buildingId?: number) {}
 }

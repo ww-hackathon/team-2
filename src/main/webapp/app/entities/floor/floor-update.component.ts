@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IFloor, Floor } from 'app/shared/model/floor.model';
 import { FloorService } from './floor.service';
+import { IBuilding } from 'app/shared/model/building.model';
+import { BuildingService } from 'app/entities/building/building.service';
 
 @Component({
   selector: 'jhi-floor-update',
@@ -14,17 +16,26 @@ import { FloorService } from './floor.service';
 })
 export class FloorUpdateComponent implements OnInit {
   isSaving = false;
+  buildings: IBuilding[] = [];
 
   editForm = this.fb.group({
     id: [],
     identifier: [null, [Validators.required]],
+    buildingId: [],
   });
 
-  constructor(protected floorService: FloorService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected floorService: FloorService,
+    protected buildingService: BuildingService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ floor }) => {
       this.updateForm(floor);
+
+      this.buildingService.query().subscribe((res: HttpResponse<IBuilding[]>) => (this.buildings = res.body || []));
     });
   }
 
@@ -32,6 +43,7 @@ export class FloorUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: floor.id,
       identifier: floor.identifier,
+      buildingId: floor.buildingId,
     });
   }
 
@@ -54,6 +66,7 @@ export class FloorUpdateComponent implements OnInit {
       ...new Floor(),
       id: this.editForm.get(['id'])!.value,
       identifier: this.editForm.get(['identifier'])!.value,
+      buildingId: this.editForm.get(['buildingId'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class FloorUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IBuilding): any {
+    return item.id;
   }
 }

@@ -1,5 +1,6 @@
 package de.wwag.hackathon.team2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,9 +32,9 @@ public class Deskgroup implements Serializable {
     @Column(name = "identifier", nullable = false)
     private Integer identifier;
 
-    @NotNull
-    @Column(name = "available_seats", nullable = false)
-    private Integer availableSeats;
+    @ManyToOne
+    @JsonIgnoreProperties(value = "deskgroups", allowSetters = true)
+    private Wing wing;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -70,17 +71,17 @@ public class Deskgroup implements Serializable {
         this.identifier = identifier;
     }
 
-    public Integer getAvailableSeats() {
-        return availableSeats;
+    public Wing getWing() {
+        return wing;
     }
 
-    public Deskgroup availableSeats(Integer availableSeats) {
-        this.availableSeats = availableSeats;
+    public Deskgroup wing(Wing wing) {
+        this.wing = wing;
         return this;
     }
 
-    public void setAvailableSeats(Integer availableSeats) {
-        this.availableSeats = availableSeats;
+    public void setWing(Wing wing) {
+        this.wing = wing;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -107,7 +108,6 @@ public class Deskgroup implements Serializable {
             "id=" + getId() +
             ", seats=" + getSeats() +
             ", identifier=" + getIdentifier() +
-            ", availableSeats=" + getAvailableSeats() +
             "}";
     }
 }

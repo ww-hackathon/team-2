@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wwHackathonTeam2App.dailyReservation.home.title">Daily Reservations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-daily-reservation" [routerLink]="['/daily-reservation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="wwHackathonTeam2App.dailyReservation.home.createLabel">
+            Create a new Daily Reservation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dailyReservations?.length === 0">
+        <span jhiTranslate="wwHackathonTeam2App.dailyReservation.home.notFound">No dailyReservations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dailyReservations && dailyReservations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.dailyReservation.date">Date</span></th>
+                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.dailyReservation.deskgroup">Deskgroup</span></th>
+                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.dailyReservation.user">User</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dailyReservation of dailyReservations ;trackBy: trackId">
+                    <td><a [routerLink]="['/daily-reservation', dailyReservation.id, 'view']">{{ dailyReservation.id }}</a></td>
+                    <td>{{ dailyReservation.date | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="dailyReservation.deskgroupId">
+                            <a [routerLink]="['/deskgroup', dailyReservation.deskgroupId , 'view']" >{{ dailyReservation.deskgroupId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ dailyReservation.userId }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/daily-reservation', dailyReservation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/daily-reservation', dailyReservation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dailyReservation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

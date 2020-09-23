@@ -3,17 +3,17 @@
   "clientRootFolder": "",
   "relationships": [
     {
-      "relationshipName": "floors",
-      "otherEntityName": "floor",
       "relationshipType": "one-to-many",
-      "otherEntityRelationshipName": "building"
+      "otherEntityName": "floor",
+      "otherEntityRelationshipName": "building",
+      "relationshipName": "floor"
     }
   ],
   "fields": [
     {
       "fieldName": "identifier",
       "fieldType": "Integer",
-      "fieldValidateRules": ["required", "unique", "min", "max"],
+      "fieldValidateRules": ["required", "min", "max"],
       "fieldValidateRulesMin": "1",
       "fieldValidateRulesMax": "14"
     }
@@ -26,5 +26,8 @@
   "databaseType": "sql",
   "readOnly": false,
   "jpaMetamodelFiltering": false,
-  "pagination": "no"
+  "pagination": "no",
+  "name": "Building",
+  "embedded": false,
+  "applications": "*"
 }

@@ -27,7 +27,7 @@ public class Building implements Serializable {
     @NotNull
     @Min(value = 1)
     @Max(value = 14)
-    @Column(name = "identifier", nullable = false, unique = true)
+    @Column(name = "identifier", nullable = false)
     private Integer identifier;
 
     @OneToMany(mappedBy = "building")
@@ -65,13 +65,13 @@ public class Building implements Serializable {
         return this;
     }
 
-    public Building addFloors(Floor floor) {
+    public Building addFloor(Floor floor) {
         this.floors.add(floor);
         floor.setBuilding(this);
         return this;
     }
 
-    public Building removeFloors(Floor floor) {
+    public Building removeFloor(Floor floor) {
         this.floors.remove(floor);
         floor.setBuilding(null);
         return this;

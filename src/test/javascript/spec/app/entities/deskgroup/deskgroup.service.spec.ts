@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(DeskgroupService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Deskgroup(0, 0, 0, 0);
+      elemDefault = new Deskgroup(0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -56,7 +56,6 @@ describe('Service Tests', () => {
           {
             seats: 1,
             identifier: 1,
-            availableSeats: 1,
           },
           elemDefault
         );
@@ -75,7 +74,6 @@ describe('Service Tests', () => {
           {
             seats: 1,
             identifier: 1,
-            availableSeats: 1,
           },
           elemDefault
         );

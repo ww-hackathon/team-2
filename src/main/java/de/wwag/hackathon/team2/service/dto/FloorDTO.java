@@ -14,6 +14,8 @@ public class FloorDTO implements Serializable {
     @NotNull
     private FloorIdentifier identifier;
 
+
+    private Long buildingId;
     
     public Long getId() {
         return id;
@@ -29,6 +31,14 @@ public class FloorDTO implements Serializable {
 
     public void setIdentifier(FloorIdentifier identifier) {
         this.identifier = identifier;
+    }
+
+    public Long getBuildingId() {
+        return buildingId;
+    }
+
+    public void setBuildingId(Long buildingId) {
+        this.buildingId = buildingId;
     }
 
     @Override
@@ -54,6 +64,7 @@ public class FloorDTO implements Serializable {
         return "FloorDTO{" +
             "id=" + getId() +
             ", identifier='" + getIdentifier() + "'" +
+            ", buildingId=" + getBuildingId() +
             "}";
     }
 }

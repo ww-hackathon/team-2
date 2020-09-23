@@ -12,6 +12,12 @@
                 <dd>
                     <span jhiTranslate="{{ 'wwHackathonTeam2App.FloorIdentifier.' + floor.identifier }}">{{ floor.identifier }}</span>
                 </dd>
+                <dt><span jhiTranslate="wwHackathonTeam2App.floor.building">Building</span></dt>
+                <dd>
+                    <div *ngIf="floor.buildingId">
+                        <a [routerLink]="['/building', floor.buildingId, 'view']">{{ floor.buildingId }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

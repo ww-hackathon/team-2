@@ -1,0 +1,24 @@
+{
+  "wwHackathonTeam2App": {
+    "dailyReservation": {
+      "home": {
+        "title": "Daily Reservations",
+        "createLabel": "Daily Reservation erstellen",
+        "createOrEditLabel": "Daily Reservation erstellen oder bearbeiten",
+        "notFound": "No Daily Reservations found"
+      },
+      "created": "Daily Reservation erstellt mit ID {{ param }}",
+      "updated": "Daily Reservation aktualisiert mit ID {{ param }}",
+      "deleted": "Daily Reservation gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Daily Reservation {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Daily Reservation"
+      },
+      "date": "Date",
+      "deskgroup": "Deskgroup",
+      "user": "User"
+    }
+  }
+}

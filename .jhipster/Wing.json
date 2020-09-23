@@ -3,10 +3,17 @@
   "clientRootFolder": "",
   "relationships": [
     {
-      "relationshipName": "deskgroups",
-      "otherEntityName": "deskgroup",
       "relationshipType": "one-to-many",
-      "otherEntityRelationshipName": "wing"
+      "otherEntityName": "deskgroup",
+      "otherEntityRelationshipName": "wing",
+      "relationshipName": "deskgroup"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "floor",
+      "otherEntityRelationshipName": "wing",
+      "relationshipName": "floor",
+      "otherEntityField": "id"
     }
   ],
   "fields": [
@@ -25,5 +32,8 @@
   "databaseType": "sql",
   "readOnly": false,
   "jpaMetamodelFiltering": false,
-  "pagination": "no"
+  "pagination": "no",
+  "name": "Wing",
+  "embedded": false,
+  "applications": "*"
 }

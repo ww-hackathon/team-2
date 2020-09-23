@@ -11,6 +11,7 @@
         "wing": "Wing",
         "floor": "Floor",
         "building": "Building",
+        "dailyReservation": "Daily Reservation",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

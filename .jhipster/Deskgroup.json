@@ -1,7 +1,15 @@
 {
   "fluentMethods": true,
   "clientRootFolder": "",
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "wing",
+      "otherEntityRelationshipName": "deskgroup",
+      "relationshipName": "wing",
+      "otherEntityField": "id"
+    }
+  ],
   "fields": [
     {
       "fieldName": "seats",
@@ -11,11 +19,6 @@
     },
     {
       "fieldName": "identifier",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "availableSeats",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     }
@@ -28,5 +31,8 @@
   "databaseType": "sql",
   "readOnly": false,
   "jpaMetamodelFiltering": false,
-  "pagination": "no"
+  "pagination": "no",
+  "name": "Deskgroup",
+  "embedded": false,
+  "applications": "*"
 }

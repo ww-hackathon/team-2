@@ -17,7 +17,8 @@
         "title": "Floor"
       },
       "identifier": "Identifier",
-      "wings": "Wings"
+      "wing": "Wing",
+      "building": "Building"
     }
   }
 }

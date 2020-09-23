@@ -48,19 +48,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="wwHackathonTeam2App.deskgroup.availableSeats" for="field_availableSeats">Available Seats</label>
-                    <input type="number" class="form-control" name="availableSeats" id="field_availableSeats"
-                           formControlName="availableSeats"/>
-                    <div *ngIf="editForm.get('availableSeats')!.invalid && (editForm.get('availableSeats')!.dirty || editForm.get('availableSeats')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('availableSeats')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('availableSeats')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
+                    <label class="form-control-label" jhiTranslate="wwHackathonTeam2App.deskgroup.wing" for="field_wing">Wing</label>
+                    <select class="form-control" id="field_wing" name="wing" formControlName="wingId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="wingOption.id" *ngFor="let wingOption of wings; trackBy: trackById">{{ wingOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

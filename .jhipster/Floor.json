@@ -3,10 +3,17 @@
   "clientRootFolder": "",
   "relationships": [
     {
-      "relationshipName": "wings",
-      "otherEntityName": "wing",
       "relationshipType": "one-to-many",
-      "otherEntityRelationshipName": "floor"
+      "otherEntityName": "wing",
+      "otherEntityRelationshipName": "floor",
+      "relationshipName": "wing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "building",
+      "otherEntityRelationshipName": "floor",
+      "relationshipName": "building",
+      "otherEntityField": "id"
     }
   ],
   "fields": [
@@ -25,5 +32,8 @@
   "databaseType": "sql",
   "readOnly": false,
   "jpaMetamodelFiltering": false,
-  "pagination": "no"
+  "pagination": "no",
+  "name": "Floor",
+  "embedded": false,
+  "applications": "*"
 }

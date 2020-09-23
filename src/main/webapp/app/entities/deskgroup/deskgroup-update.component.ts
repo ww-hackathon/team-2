@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IDeskgroup, Deskgroup } from 'app/shared/model/deskgroup.model';
 import { DeskgroupService } from './deskgroup.service';
+import { IWing } from 'app/shared/model/wing.model';
+import { WingService } from 'app/entities/wing/wing.service';
 
 @Component({
   selector: 'jhi-deskgroup-update',
@@ -14,19 +16,27 @@ import { DeskgroupService } from './deskgroup.service';
 })
 export class DeskgroupUpdateComponent implements OnInit {
   isSaving = false;
+  wings: IWing[] = [];
 
   editForm = this.fb.group({
     id: [],
     seats: [null, [Validators.required, Validators.min(1)]],
     identifier: [null, [Validators.required]],
-    availableSeats: [null, [Validators.required]],
+    wingId: [],
   });
 
-  constructor(protected deskgroupService: DeskgroupService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected deskgroupService: DeskgroupService,
+    protected wingService: WingService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ deskgroup }) => {
       this.updateForm(deskgroup);
+
+      this.wingService.query().subscribe((res: HttpResponse<IWing[]>) => (this.wings = res.body || []));
     });
   }
 
@@ -35,7 +45,7 @@ export class DeskgroupUpdateComponent implements OnInit {
       id: deskgroup.id,
       seats: deskgroup.seats,
       identifier: deskgroup.identifier,
-      availableSeats: deskgroup.availableSeats,
+      wingId: deskgroup.wingId,
     });
   }
 
@@ -59,7 +69,7 @@ export class DeskgroupUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       seats: this.editForm.get(['seats'])!.value,
       identifier: this.editForm.get(['identifier'])!.value,
-      availableSeats: this.editForm.get(['availableSeats'])!.value,
+      wingId: this.editForm.get(['wingId'])!.value,
     };
   }
 
@@ -77,5 +87,9 @@ export class DeskgroupUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IWing): any {
+    return item.id;
   }
 }

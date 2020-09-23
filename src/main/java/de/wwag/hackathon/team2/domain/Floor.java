@@ -1,5 +1,6 @@
 package de.wwag.hackathon.team2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -35,6 +36,10 @@ public class Floor implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Wing> wings = new HashSet<>();
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "floors", allowSetters = true)
+    private Building building;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -66,13 +71,13 @@ public class Floor implements Serializable {
         return this;
     }
 
-    public Floor addWings(Wing wing) {
+    public Floor addWing(Wing wing) {
         this.wings.add(wing);
         wing.setFloor(this);
         return this;
     }
 
-    public Floor removeWings(Wing wing) {
+    public Floor removeWing(Wing wing) {
         this.wings.remove(wing);
         wing.setFloor(null);
         return this;
@@ -80,6 +85,19 @@ public class Floor implements Serializable {
 
     public void setWings(Set<Wing> wings) {
         this.wings = wings;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public Floor building(Building building) {
+        this.building = building;
+        return this;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

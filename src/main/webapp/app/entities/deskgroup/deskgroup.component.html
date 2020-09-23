@@ -25,7 +25,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.deskgroup.seats">Seats</span></th>
                     <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.deskgroup.identifier">Identifier</span></th>
-                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.deskgroup.availableSeats">Available Seats</span></th>
+                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.deskgroup.wing">Wing</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,7 +34,11 @@
                     <td><a [routerLink]="['/deskgroup', deskgroup.id, 'view']">{{ deskgroup.id }}</a></td>
                     <td>{{ deskgroup.seats }}</td>
                     <td>{{ deskgroup.identifier }}</td>
-                    <td>{{ deskgroup.availableSeats }}</td>
+                    <td>
+                        <div *ngIf="deskgroup.wingId">
+                            <a [routerLink]="['/wing', deskgroup.wingId , 'view']" >{{ deskgroup.wingId }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

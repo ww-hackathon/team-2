@@ -55,6 +55,7 @@ public class CacheConfiguration {
             createCache(cm, de.wwag.hackathon.team2.domain.Floor.class.getName() + ".wings");
             createCache(cm, de.wwag.hackathon.team2.domain.Building.class.getName());
             createCache(cm, de.wwag.hackathon.team2.domain.Building.class.getName() + ".floors");
+            createCache(cm, de.wwag.hackathon.team2.domain.DailyReservation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

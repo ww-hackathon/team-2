@@ -14,6 +14,8 @@ public class WingDTO implements Serializable {
     @NotNull
     private WingIdentifier identifier;
 
+
+    private Long floorId;
     
     public Long getId() {
         return id;
@@ -29,6 +31,14 @@ public class WingDTO implements Serializable {
 
     public void setIdentifier(WingIdentifier identifier) {
         this.identifier = identifier;
+    }
+
+    public Long getFloorId() {
+        return floorId;
+    }
+
+    public void setFloorId(Long floorId) {
+        this.floorId = floorId;
     }
 
     @Override
@@ -54,6 +64,7 @@ public class WingDTO implements Serializable {
         return "WingDTO{" +
             "id=" + getId() +
             ", identifier='" + getIdentifier() + "'" +
+            ", floorId=" + getFloorId() +
             "}";
     }
 }

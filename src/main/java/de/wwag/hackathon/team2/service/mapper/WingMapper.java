@@ -9,12 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Wing} and its DTO {@link WingDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {FloorMapper.class})
 public interface WingMapper extends EntityMapper<WingDTO, Wing> {
 
+    @Mapping(source = "floor.id", target = "floorId")
+    WingDTO toDto(Wing wing);
 
     @Mapping(target = "deskgroups", ignore = true)
-    @Mapping(target = "removeDeskgroups", ignore = true)
+    @Mapping(target = "removeDeskgroup", ignore = true)
+    @Mapping(source = "floorId", target = "floor")
     Wing toEntity(WingDTO wingDTO);
 
     default Wing fromId(Long id) {

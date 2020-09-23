@@ -14,7 +14,7 @@ public interface BuildingMapper extends EntityMapper<BuildingDTO, Building> {
 
 
     @Mapping(target = "floors", ignore = true)
-    @Mapping(target = "removeFloors", ignore = true)
+    @Mapping(target = "removeFloor", ignore = true)
     Building toEntity(BuildingDTO buildingDTO);
 
     default Building fromId(Long id) {

@@ -39,6 +39,6 @@
     "nativeLanguage": "de",
     "languages": ["de", "en"],
     "blueprints": [],
-    "lastLiquibaseTimestamp": 1600851209000
+    "lastLiquibaseTimestamp": 1600863891000
   }
 }

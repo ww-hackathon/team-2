@@ -17,7 +17,7 @@
         "title": "Building"
       },
       "identifier": "Identifier",
-      "floors": "Floors"
+      "floor": "Floor"
     }
   }
 }

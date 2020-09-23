@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.wing.identifier">Identifier</span></th>
+                    <th scope="col" ><span jhiTranslate="wwHackathonTeam2App.wing.floor">Floor</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <tr *ngFor="let wing of wings ;trackBy: trackId">
                     <td><a [routerLink]="['/wing', wing.id, 'view']">{{ wing.id }}</a></td>
                     <td jhiTranslate="{{ 'wwHackathonTeam2App.WingIdentifier.' + wing.identifier }}">{{ wing.identifier }}</td>
+                    <td>
+                        <div *ngIf="wing.floorId">
+                            <a [routerLink]="['/floor', wing.floorId , 'view']" >{{ wing.floorId }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

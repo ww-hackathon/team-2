@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IWing, Wing } from 'app/shared/model/wing.model';
 import { WingService } from './wing.service';
+import { IFloor } from 'app/shared/model/floor.model';
+import { FloorService } from 'app/entities/floor/floor.service';
 
 @Component({
   selector: 'jhi-wing-update',
@@ -14,17 +16,26 @@ import { WingService } from './wing.service';
 })
 export class WingUpdateComponent implements OnInit {
   isSaving = false;
+  floors: IFloor[] = [];
 
   editForm = this.fb.group({
     id: [],
     identifier: [null, [Validators.required]],
+    floorId: [],
   });
 
-  constructor(protected wingService: WingService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected wingService: WingService,
+    protected floorService: FloorService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ wing }) => {
       this.updateForm(wing);
+
+      this.floorService.query().subscribe((res: HttpResponse<IFloor[]>) => (this.floors = res.body || []));
     });
   }
 
@@ -32,6 +43,7 @@ export class WingUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: wing.id,
       identifier: wing.identifier,
+      floorId: wing.floorId,
     });
   }
 
@@ -54,6 +66,7 @@ export class WingUpdateComponent implements OnInit {
       ...new Wing(),
       id: this.editForm.get(['id'])!.value,
       identifier: this.editForm.get(['identifier'])!.value,
+      floorId: this.editForm.get(['floorId'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class WingUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IFloor): any {
+    return item.id;
   }
 }

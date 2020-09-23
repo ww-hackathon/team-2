@@ -9,12 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Floor} and its DTO {@link FloorDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {BuildingMapper.class})
 public interface FloorMapper extends EntityMapper<FloorDTO, Floor> {
 
+    @Mapping(source = "building.id", target = "buildingId")
+    FloorDTO toDto(Floor floor);
 
     @Mapping(target = "wings", ignore = true)
-    @Mapping(target = "removeWings", ignore = true)
+    @Mapping(target = "removeWing", ignore = true)
+    @Mapping(source = "buildingId", target = "building")
     Floor toEntity(FloorDTO floorDTO);
 
     default Floor fromId(Long id) {

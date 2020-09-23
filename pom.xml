@@ -319,6 +319,7 @@
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -1079,6 +1080,7 @@
                             It has no influence on the Maven build itself.
                             Remove when the m2e plugin can correctly bind to Maven lifecycle
                         -->
+
                         <plugin>
                             <groupId>org.eclipse.m2e</groupId>
                             <artifactId>lifecycle-mapping</artifactId>

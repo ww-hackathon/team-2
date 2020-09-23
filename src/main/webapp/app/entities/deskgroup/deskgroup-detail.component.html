@@ -16,9 +16,11 @@
                 <dd>
                     <span>{{ deskgroup.identifier }}</span>
                 </dd>
-                <dt><span jhiTranslate="wwHackathonTeam2App.deskgroup.availableSeats">Available Seats</span></dt>
+                <dt><span jhiTranslate="wwHackathonTeam2App.deskgroup.wing">Wing</span></dt>
                 <dd>
-                    <span>{{ deskgroup.availableSeats }}</span>
+                    <div *ngIf="deskgroup.wingId">
+                        <a [routerLink]="['/wing', deskgroup.wingId, 'view']">{{ deskgroup.wingId }}</a>
+                    </div>
                 </dd>
             </dl>
 
