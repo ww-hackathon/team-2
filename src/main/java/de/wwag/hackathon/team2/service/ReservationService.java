@@ -3,7 +3,7 @@ package de.wwag.hackathon.team2.service;
 import de.wwag.hackathon.team2.domain.DailyReservation;
 import de.wwag.hackathon.team2.domain.Deskgroup;
 import de.wwag.hackathon.team2.repository.*;
-import de.wwag.hackathon.team2.service.dto.AvailableDeskgroupDTO;
+import de.wwag.hackathon.team2.service.dto.DetailedDeskgroupDTO;
 import de.wwag.hackathon.team2.service.mapper.BuildingMapper;
 import de.wwag.hackathon.team2.service.mapper.DeskgroupMapper;
 import de.wwag.hackathon.team2.service.mapper.FloorMapper;
@@ -80,11 +80,11 @@ public class ReservationService {
         return valueMap;
     }
 
-    public List<AvailableDeskgroupDTO> getAvailableDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
-        List<AvailableDeskgroupDTO> availableDeskgroupDTOS = new ArrayList<>();
+    public List<DetailedDeskgroupDTO> getAvailableDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
+        List<DetailedDeskgroupDTO> availableDeskgroupDTOS = new ArrayList<>();
         List<Deskgroup> freeDeskgroups = getFreeDeskgroupsInDateSpan(startDate, endDate);
         freeDeskgroups.forEach(deskgroup -> {
-            availableDeskgroupDTOS.add(new AvailableDeskgroupDTO (
+            availableDeskgroupDTOS.add(new DetailedDeskgroupDTO(
                 buildingMapper.toDto(deskgroup.getWing().getFloor().getBuilding()),
                 floorMapper.toDto(deskgroup.getWing().getFloor()),
                 wingMapper.toDto(deskgroup.getWing()),

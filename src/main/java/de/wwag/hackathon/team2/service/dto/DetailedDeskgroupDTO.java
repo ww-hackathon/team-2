@@ -5,7 +5,7 @@ import de.wwag.hackathon.team2.service.mapper.DeskgroupMapper;
 import de.wwag.hackathon.team2.service.mapper.FloorMapper;
 import de.wwag.hackathon.team2.service.mapper.WingMapper;
 
-public class AvailableDeskgroupDTO {
+public class DetailedDeskgroupDTO {
 
     private BuildingDTO buildingDTO;
     private FloorDTO floorDTO;
@@ -15,7 +15,7 @@ public class AvailableDeskgroupDTO {
 
 
 
-    public AvailableDeskgroupDTO(BuildingDTO buildingDTO, FloorDTO floorDTO, WingDTO wingDTO, DeskgroupDTO deskgroupDTO) {
+    public DetailedDeskgroupDTO(BuildingDTO buildingDTO, FloorDTO floorDTO, WingDTO wingDTO, DeskgroupDTO deskgroupDTO) {
         this.buildingDTO = buildingDTO;
         this.floorDTO = floorDTO;
         this.wingDTO = wingDTO;

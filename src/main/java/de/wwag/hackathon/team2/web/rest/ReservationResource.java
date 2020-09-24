@@ -1,7 +1,7 @@
 package de.wwag.hackathon.team2.web.rest;
 
 import de.wwag.hackathon.team2.service.ReservationService;
-import de.wwag.hackathon.team2.service.dto.AvailableDeskgroupDTO;
+import de.wwag.hackathon.team2.service.dto.DetailedDeskgroupDTO;
 import de.wwag.hackathon.team2.service.mapper.DeskgroupMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ public class ReservationResource {
 
 
     @GetMapping
-    public ResponseEntity<List<AvailableDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+    public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
 
 
         return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate));
