@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BuildingService } from 'app/entities/building/building.service';
-import { IBuilding } from 'app/shared/model/building.model';
-import { map } from 'rxjs/operators';
 /* eslint-disable */
 
 @Component({
@@ -20,21 +18,7 @@ export class NewReservationComponent implements OnInit {
     building: this.fb.control(''),
   });
 
-  buildings$ = this.buildingService.query().pipe(
-    map((res: any) => {
-      const buildings: IBuilding[] = res.body as IBuilding[];
-      return buildings.sort((a, b) => {
-        if (a.identifier > b.identifier) {
-          return 1;
-        }
-        if (a.identifier < b.identifier) {
-          return -1;
-        }
-
-        return 0;
-      });
-    })
-  );
+  buildings$ = this.buildingService.queryAndSort();
 
   constructor(private fb: FormBuilder, private buildingService: BuildingService) {}
 

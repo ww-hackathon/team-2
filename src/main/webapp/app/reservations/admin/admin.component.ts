@@ -10,7 +10,7 @@ import { ThresholdService } from './threshold.service';
 })
 export class ReservationsAdminComponent implements OnInit {
   angForm: FormGroup = this.fb.group({
-    threshold: [50, Validators.required],
+    threshold: this.fb.control(50, [Validators.required]),
   });
 
   constructor(protected thresholdService: ThresholdService, private fb: FormBuilder) {}
@@ -22,6 +22,6 @@ export class ReservationsAdminComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.thresholdService.update(this.angForm.get('threshold').value).subscribe((res: any) => {});
+    this.thresholdService.update(this.angForm.controls['threshold'].value).subscribe((res: any) => {});
   }
 }

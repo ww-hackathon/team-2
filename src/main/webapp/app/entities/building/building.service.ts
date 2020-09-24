@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IBuilding } from 'app/shared/model/building.model';
+import { map } from 'rxjs/operators';
 
 type EntityResponseType = HttpResponse<IBuilding>;
 type EntityArrayResponseType = HttpResponse<IBuilding[]>;
@@ -34,5 +35,23 @@ export class BuildingService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  queryAndSort(req?: any): Observable<IBuilding[]> {
+    return this.query(req).pipe(
+      map((res: any) => {
+        const buildings: IBuilding[] = res.body as IBuilding[];
+        return buildings.sort((a, b) => {
+          if (a.identifier > b.identifier) {
+            return 1;
+          }
+          if (a.identifier < b.identifier) {
+            return -1;
+          }
+
+          return 0;
+        });
+      })
+    );
   }
 }
