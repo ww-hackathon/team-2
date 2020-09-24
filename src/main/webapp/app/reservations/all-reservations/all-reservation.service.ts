@@ -8,10 +8,18 @@ import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AllReservationService {
+  public hasData: boolean = true;
+
   public dataSource: MatTableDataSource<IDailyReservation>;
 
   public dataSource$: Observable<void> = this.reservationService.query().pipe(
     map((data: any) => {
+      console.log(data.body);
+      if (data.body.length > 0) {
+        this.hasData = true;
+      } else {
+        this.hasData = false;
+      }
       this.dataSource = new MatTableDataSource(data.body as IDailyReservation[]);
     })
   );
