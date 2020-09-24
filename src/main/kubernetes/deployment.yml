@@ -15,7 +15,7 @@ spec:
       labels:
         app: jhipster-app
         version: 'v1'
-        BUILD_NUMBER: '27'
+        BUILD_NUMBER: '31'
     spec:
       affinity:
         podAntiAffinity:
