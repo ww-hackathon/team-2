@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./seat-plan.component.scss'],
 })
 export class SeatPlanComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { highlighted: number }) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { highlighted: number; wing: 'A' | 'B' }) {}
 
   ngOnInit(): void {}
 }

@@ -82,6 +82,20 @@ export class DailyReservationService {
         deskgroup: 1,
       },
       {
+        id: 1,
+        building: '11',
+        floor: 0,
+        wing: 'A',
+        deskgroup: 2,
+      },
+      {
+        id: 1,
+        building: '11',
+        floor: 0,
+        wing: 'A',
+        deskgroup: 3,
+      },
+      {
         id: 2,
         building: '11',
         floor: 1,
