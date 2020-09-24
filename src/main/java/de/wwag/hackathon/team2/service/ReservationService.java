@@ -3,7 +3,7 @@ package de.wwag.hackathon.team2.service;
 import de.wwag.hackathon.team2.domain.DailyReservation;
 import de.wwag.hackathon.team2.domain.Deskgroup;
 import de.wwag.hackathon.team2.repository.*;
-import de.wwag.hackathon.team2.service.dto.AvailableDeskgroupDTO;
+import de.wwag.hackathon.team2.service.dto.DetailedDeskgroupDTO;
 import de.wwag.hackathon.team2.service.mapper.BuildingMapper;
 import de.wwag.hackathon.team2.service.mapper.DeskgroupMapper;
 import de.wwag.hackathon.team2.service.mapper.FloorMapper;
@@ -27,22 +27,32 @@ public class ReservationService {
     private final FloorRepository floorRepository;
     private final WingRepository wingRepository;
 
-    private BuildingMapper buildingMapper;
-    private FloorMapper floorMapper;
-    private WingMapper wingMapper;
-    private DeskgroupMapper deskgroupMapper;
+    private final BuildingMapper buildingMapper;
+    private final FloorMapper floorMapper;
+    private final WingMapper wingMapper;
+    private final DeskgroupMapper deskgroupMapper;
 
-    public ReservationService(DeskgroupRepository deskgroupRepository, DailyReservationRepository dailyReservationRepository, BuildingRepository buildingRepository, FloorRepository floorRepository, WingRepository wingRepository) {
+    public ReservationService(DeskgroupRepository deskgroupRepository, DailyReservationRepository dailyReservationRepository, BuildingRepository buildingRepository, FloorRepository floorRepository, WingRepository wingRepository, BuildingMapper buildingMapper, FloorMapper floorMapper, WingMapper wingMapper, DeskgroupMapper deskgroupMapper) {
         this.deskgroupRepository = deskgroupRepository;
         this.dailyReservationRepository = dailyReservationRepository;
         this.buildingRepository = buildingRepository;
         this.floorRepository = floorRepository;
         this.wingRepository = wingRepository;
+        this.buildingMapper = buildingMapper;
+        this.floorMapper = floorMapper;
+        this.wingMapper = wingMapper;
+        this.deskgroupMapper = deskgroupMapper;
     }
 
     private List<Deskgroup> getFreeDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
        List<DailyReservation> dailyReservations = dailyReservationRepository.findAllByDateIsBetween(startDate, endDate);
-       return deskgroupRepository.findAllByIdIsNotIn(getCompletlyBookedDeskgroupIds(getBookedDeskgroupsPerId(dailyReservations)));
+       List<Long> deskIds = getCompletlyBookedDeskgroupIds(getBookedDeskgroupsPerId(dailyReservations));
+       if(deskIds.isEmpty()) {
+           return deskgroupRepository.findAll();
+       } else {
+           return deskgroupRepository.findAllByIdIn(deskIds);
+       }
+
 
     }
 
@@ -70,11 +80,11 @@ public class ReservationService {
         return valueMap;
     }
 
-    public List<AvailableDeskgroupDTO> getAvailableDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
-        List<AvailableDeskgroupDTO> availableDeskgroupDTOS = new ArrayList<>();
+    public List<DetailedDeskgroupDTO> getAvailableDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
+        List<DetailedDeskgroupDTO> availableDeskgroupDTOS = new ArrayList<>();
         List<Deskgroup> freeDeskgroups = getFreeDeskgroupsInDateSpan(startDate, endDate);
         freeDeskgroups.forEach(deskgroup -> {
-            availableDeskgroupDTOS.add(new AvailableDeskgroupDTO (
+            availableDeskgroupDTOS.add(new DetailedDeskgroupDTO(
                 buildingMapper.toDto(deskgroup.getWing().getFloor().getBuilding()),
                 floorMapper.toDto(deskgroup.getWing().getFloor()),
                 wingMapper.toDto(deskgroup.getWing()),
