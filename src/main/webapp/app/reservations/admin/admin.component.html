@@ -1,1 +1,15 @@
-<p>admin works!</p>
+<div class="page-wrapper">
+    <header>
+        <h2>
+            Admin Threshold
+        </h2>
+    </header>
+    
+    <section class="wrapper">
+        <label for="update-threshold-input"><h6>Update the threshold</h6></label>
+        <div class="input-group mb-3">
+            <input placeholder="Current Value" (input)="onThresholdInput($event)" type="number" class="form-control" id="update-threshold-input" aria-describedby="basic-addon3">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="updateThresholdValue()">Update</button>
+    </section>
+</div>
