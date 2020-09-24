@@ -5,15 +5,15 @@
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Von bis</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate formControlName="startDate" placeholder="Anfang" />
+        <mat-date-range-input [rangePicker]="picker" [dateFilter]="dateFilter">
+          <input matStartDate [min]="today" [max]="maxDate" formControlName="startDate" placeholder="Anfang" />
           <input matEndDate formControlName="endDate" placeholder="Ende" />
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
 
-        <!-- <mat-error *ngIf="form.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-        <mat-error *ngIf="form.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+        <mat-error *ngIf="form.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="form.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
       </mat-form-field>
     </p>
 

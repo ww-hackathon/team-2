@@ -11,8 +11,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./new-reservation.component.scss'],
 })
 export class NewReservationComponent implements OnInit {
+  today = new Date();
+  maxDate = new Date(new Date().setDate(this.today.getDate() + 7));
+
   form = this.fb.group({
-    startDate: this.fb.control(new Date()),
+    startDate: this.fb.control(this.today),
     endDate: this.fb.control(''),
     building: this.fb.control(''),
   });
@@ -39,5 +42,10 @@ export class NewReservationComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+  }
+
+  dateFilter(date: Date) {
+    const notSatSun = date.getUTCDay() != 5 && date.getUTCDay() != 6;
+    return notSatSun;
   }
 }
