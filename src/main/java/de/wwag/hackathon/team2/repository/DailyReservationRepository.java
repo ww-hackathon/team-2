@@ -16,4 +16,5 @@ public interface DailyReservationRepository extends JpaRepository<DailyReservati
 
     @Query("select dailyReservation from DailyReservation dailyReservation where dailyReservation.user.login = ?#{principal.username}")
     List<DailyReservation> findByUserIsCurrentUser();
+
 }

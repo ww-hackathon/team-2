@@ -1,11 +1,12 @@
 package de.wwag.hackathon.team2.web.rest;
 
-import de.wwag.hackathon.team2.domain.DailyReservation;
 import de.wwag.hackathon.team2.service.UserSettingsService;
 import de.wwag.hackathon.team2.service.dto.DailyReservationDTO;
 import de.wwag.hackathon.team2.service.mapper.DailyReservationMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user/reservations")
@@ -21,29 +22,18 @@ public class UserSettingsResource {
     }
 
     @GetMapping
-    public ResponseEntity<DailyReservationDTO> getDailyReservation() {
-
-        userSettingsService.getAllDailyReservationsForUser();
-
-        return null;
+    public ResponseEntity<List<DailyReservationDTO>> getDailyReservation() {
+        return ResponseEntity.ok(dailyReservationMapper.toDto(userSettingsService.getAllDailyReservationsForUser()));
     }
 
     @PostMapping
-    public ResponseEntity<DailyReservationDTO> postDailyReservation(@RequestParam DailyReservationDTO dailyReservationDTO) {
-
-        DailyReservation dailyReservation = dailyReservationMapper.toEntity(dailyReservationDTO);
-        userSettingsService.addDailyReservation(dailyReservation);
-
-        return null;
+    public ResponseEntity<DailyReservationDTO> postDailyReservation(@RequestBody DailyReservationDTO dailyReservationDTO) {
+        return ResponseEntity.ok(dailyReservationMapper.toDto(userSettingsService.addDailyReservation(dailyReservationMapper.toEntity(dailyReservationDTO))));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<DailyReservationDTO> getDailyReservationById(@PathVariable Long id) {
-
-        DailyReservation dr = userSettingsService.getDailyReservationById(id);
-        DailyReservationDTO drdto = dailyReservationMapper.toDto(dr);
-
-        return null;
+        return ResponseEntity.ok(dailyReservationMapper.toDto(userSettingsService.getDailyReservationById(id)));
     }
 
     @DeleteMapping("/{id}")
@@ -51,16 +41,13 @@ public class UserSettingsResource {
 
         userSettingsService.deleteDailyReservationById(id);
 
-        return null;
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DailyReservationDTO> putDailyReservationById(@PathVariable Long id, @RequestParam DailyReservationDTO updatedDailyReservationDTO) {
-
-        DailyReservation updatedDailyReservation = dailyReservationMapper.toEntity(updatedDailyReservationDTO);
-        userSettingsService.updateDailyReservationById(id, updatedDailyReservation);
-
-        return null;
+    public ResponseEntity<DailyReservationDTO> putDailyReservationById(@PathVariable Long id, @RequestBody DailyReservationDTO updatedDailyReservationDTO) {
+        return ResponseEntity.ok(dailyReservationMapper.toDto(
+            userSettingsService.updateDailyReservationById(id, dailyReservationMapper.toEntity(updatedDailyReservationDTO))));
     }
 
 }
