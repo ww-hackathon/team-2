@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
 import { AllReservationService } from './all-reservation.service';
@@ -19,9 +20,13 @@ export class AllReservationsComponent implements OnInit {
     modalRef.componentInstance.id = element.id;
   }
 
-  constructor(protected modalService: NgbModal, public allReservationService: AllReservationService) {}
+  constructor(protected modalService: NgbModal, public allReservationService: AllReservationService, private router: Router) {}
 
   ngOnInit(): void {
     this.allReservationService.getReserVations();
+  }
+
+  redirectToCreateReservation(): void {
+    this.router.navigate(['/reservations/new']);
   }
 }

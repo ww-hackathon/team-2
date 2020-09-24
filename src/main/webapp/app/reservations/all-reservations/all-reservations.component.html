@@ -49,10 +49,10 @@
         </section>
         <section *ngIf="!allReservationService.hasData" class="empty-message-wrapper">
             <div>
-                <h3>You have no reservations available.</h3>
+                <h4>You have no reservations available.</h4>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" (click)="redirectToCreateReservation()">
                     Create Reservation
                 </button>
             </div>
