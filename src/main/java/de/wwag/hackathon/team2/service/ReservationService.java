@@ -27,22 +27,32 @@ public class ReservationService {
     private final FloorRepository floorRepository;
     private final WingRepository wingRepository;
 
-    private BuildingMapper buildingMapper;
-    private FloorMapper floorMapper;
-    private WingMapper wingMapper;
-    private DeskgroupMapper deskgroupMapper;
+    private final BuildingMapper buildingMapper;
+    private final FloorMapper floorMapper;
+    private final WingMapper wingMapper;
+    private final DeskgroupMapper deskgroupMapper;
 
-    public ReservationService(DeskgroupRepository deskgroupRepository, DailyReservationRepository dailyReservationRepository, BuildingRepository buildingRepository, FloorRepository floorRepository, WingRepository wingRepository) {
+    public ReservationService(DeskgroupRepository deskgroupRepository, DailyReservationRepository dailyReservationRepository, BuildingRepository buildingRepository, FloorRepository floorRepository, WingRepository wingRepository, BuildingMapper buildingMapper, FloorMapper floorMapper, WingMapper wingMapper, DeskgroupMapper deskgroupMapper) {
         this.deskgroupRepository = deskgroupRepository;
         this.dailyReservationRepository = dailyReservationRepository;
         this.buildingRepository = buildingRepository;
         this.floorRepository = floorRepository;
         this.wingRepository = wingRepository;
+        this.buildingMapper = buildingMapper;
+        this.floorMapper = floorMapper;
+        this.wingMapper = wingMapper;
+        this.deskgroupMapper = deskgroupMapper;
     }
 
     private List<Deskgroup> getFreeDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate) {
        List<DailyReservation> dailyReservations = dailyReservationRepository.findAllByDateIsBetween(startDate, endDate);
-       return deskgroupRepository.findAllByIdIsNotIn(getCompletlyBookedDeskgroupIds(getBookedDeskgroupsPerId(dailyReservations)));
+       List<Long> deskIds = getCompletlyBookedDeskgroupIds(getBookedDeskgroupsPerId(dailyReservations));
+       if(deskIds.isEmpty()) {
+           return deskgroupRepository.findAll();
+       } else {
+           return deskgroupRepository.findAllByIdIn(deskIds);
+       }
+
 
     }
 
