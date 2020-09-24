@@ -8,6 +8,7 @@ import { DailyReservationService } from 'app/entities/daily-reservation/daily-re
 import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
 import { map } from 'rxjs/operators';
 import { SeatPlanComponent } from './seat-plan/seat-plan.component';
+import { dateNotBefore } from './new-reservation.validators';
 /* eslint-disable */
 
 @Component({
@@ -23,10 +24,9 @@ export class NewReservationComponent implements OnInit {
   private _sort: MatSort;
 
   today = new Date();
-  maxDate = new Date(new Date().setDate(this.today.getDate() + 7));
 
   form = this.fb.group({
-    startDate: this.fb.control({ value: this.today, disabled: true }),
+    startDate: this.fb.control({ value: this.today, disabled: true }, [dateNotBefore(this.today)]),
     endDate: this.fb.control({ value: '', disabled: false }),
     building: this.fb.control(''),
   });
