@@ -41,7 +41,7 @@
         - By default this data is applied when running with the JHipster 'dev' profile.
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.-->
-
+    <!--
     <changeSet id="20200923122451-1-data" author="jhipster" context="faker">
         <loadData
                   file="config/liquibase/fake-data/daily_reservations.csv"
@@ -53,5 +53,6 @@
             <column name="user_id" type="numeric"/>
         </loadData>
     </changeSet>
+    -->
 
 </databaseChangeLog>
