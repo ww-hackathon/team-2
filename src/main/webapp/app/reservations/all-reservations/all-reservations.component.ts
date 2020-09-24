@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { DailyReservationService } from 'app/entities/daily-reservation/daily-reservation.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { AllReservationService } from './all-reservation.service';
+import { ReservationDeleteDialogComponent } from './reservation-delete-dialog/reservation-delete-dialog.component';
 /* eslint-disable */
 
 @Component({
@@ -15,29 +14,19 @@ import { map, switchMap } from 'rxjs/operators';
 export class AllReservationsComponent implements OnInit {
   displayedColumns = ['building', 'floor', 'wing', 'deskgroup', 'date', 'action-buttons'];
 
-  dataSource: MatTableDataSource<IDailyReservation>;
-
-  dataSource$: Observable<void> = this.reservationService.query().pipe(
-    map(data => {
-       this.dataSource = new MatTableDataSource(data.body as IDailyReservation[]);
-    })
-  );
-
   onDeleteReservationClick(element: IDailyReservation) {
     console.log(element);
-    this.reservationService
-      .delete(element.id!)
-      .pipe(
-        switchMap(() => {
-          return this.dataSource$;
-        })
-      )
-      .subscribe();
+    const modalRef = this.modalService.open(ReservationDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.id = element.id;
   }
 
-  constructor(private reservationService: DailyReservationService) {}
+  constructor(protected modalService: NgbModal, public allReservationService: AllReservationService, private router: Router) {}
 
   ngOnInit(): void {
-    this.dataSource$.subscribe();
+    this.allReservationService.getReserVations();
+  }
+
+  redirectToCreateReservation(): void {
+    this.router.navigate(['/reservations/new']);
   }
 }
