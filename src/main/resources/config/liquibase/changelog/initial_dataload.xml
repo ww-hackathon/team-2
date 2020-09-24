@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+     Load initial data to set up the W&W Infrastructure.
+    -->
+    <changeSet id="20200923_load_buildings" author="QuirkyPenguin">
+        <loadData
+            file="config/liquibase/data/buildings.csv"
+            separator=";"
+            tableName="building">
+            <column name="id" type="numeric"/>
+            <column name="identifier" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+    <changeSet id="20200923_load_floors" author="QuirkyPenguin">
+        <loadData
+            file="config/liquibase/data/floors.csv"
+            separator=";"
+            tableName="floor">
+            <column name="id" type="numeric"/>
+            <column name="identifier" type="string"/>
+            <column name="buildingId" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+    <changeSet id="20200923_load_wings" author="QuirkyPenguin" >
+        <loadData
+            file="config/liquibase/data/wings.csv"
+            separator=";"
+            tableName="wing">
+            <column name="id" type="numeric"/>
+            <column name="identifier" type="string"/>
+            <column name="floorId" type="numeric"/>
+        </loadData>
+    </changeSet>
+    <changeSet id="20200923_load_deskgroups" author="QuirkyPenguin" >
+        <loadData
+            file="config/liquibase/data/deskgroups.csv"
+            separator=";"
+            tableName="deskgroup">
+            <column name="id" type="numeric"/>
+            <column name="seats" type="numeric"/>
+            <column name="identifier" type="numeric"/>
+            <column name="wingId" type="numeric"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

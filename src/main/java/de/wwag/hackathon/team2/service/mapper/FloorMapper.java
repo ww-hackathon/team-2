@@ -15,8 +15,6 @@ public interface FloorMapper extends EntityMapper<FloorDTO, Floor> {
     @Mapping(source = "building.id", target = "buildingId")
     FloorDTO toDto(Floor floor);
 
-    @Mapping(target = "wings", ignore = true)
-    @Mapping(target = "removeWing", ignore = true)
     @Mapping(source = "buildingId", target = "building")
     Floor toEntity(FloorDTO floorDTO);
 

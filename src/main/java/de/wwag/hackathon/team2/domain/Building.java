@@ -30,10 +30,6 @@ public class Building implements Serializable {
     @Column(name = "identifier", nullable = false)
     private Integer identifier;
 
-    @OneToMany(mappedBy = "building")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Floor> floors = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -55,32 +51,6 @@ public class Building implements Serializable {
     public void setIdentifier(Integer identifier) {
         this.identifier = identifier;
     }
-
-    public Set<Floor> getFloors() {
-        return floors;
-    }
-
-    public Building floors(Set<Floor> floors) {
-        this.floors = floors;
-        return this;
-    }
-
-    public Building addFloor(Floor floor) {
-        this.floors.add(floor);
-        floor.setBuilding(this);
-        return this;
-    }
-
-    public Building removeFloor(Floor floor) {
-        this.floors.remove(floor);
-        floor.setBuilding(null);
-        return this;
-    }
-
-    public void setFloors(Set<Floor> floors) {
-        this.floors = floors;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {

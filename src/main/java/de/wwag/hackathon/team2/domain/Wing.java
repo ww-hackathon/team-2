@@ -32,10 +32,6 @@ public class Wing implements Serializable {
     @Column(name = "identifier", nullable = false)
     private WingIdentifier identifier;
 
-    @OneToMany(mappedBy = "wing")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Deskgroup> deskgroups = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "wings", allowSetters = true)
     private Floor floor;
@@ -60,31 +56,6 @@ public class Wing implements Serializable {
 
     public void setIdentifier(WingIdentifier identifier) {
         this.identifier = identifier;
-    }
-
-    public Set<Deskgroup> getDeskgroups() {
-        return deskgroups;
-    }
-
-    public Wing deskgroups(Set<Deskgroup> deskgroups) {
-        this.deskgroups = deskgroups;
-        return this;
-    }
-
-    public Wing addDeskgroup(Deskgroup deskgroup) {
-        this.deskgroups.add(deskgroup);
-        deskgroup.setWing(this);
-        return this;
-    }
-
-    public Wing removeDeskgroup(Deskgroup deskgroup) {
-        this.deskgroups.remove(deskgroup);
-        deskgroup.setWing(null);
-        return this;
-    }
-
-    public void setDeskgroups(Set<Deskgroup> deskgroups) {
-        this.deskgroups = deskgroups;
     }
 
     public Floor getFloor() {

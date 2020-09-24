@@ -32,10 +32,6 @@ public class Floor implements Serializable {
     @Column(name = "identifier", nullable = false)
     private FloorIdentifier identifier;
 
-    @OneToMany(mappedBy = "floor")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Wing> wings = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "floors", allowSetters = true)
     private Building building;
@@ -60,31 +56,6 @@ public class Floor implements Serializable {
 
     public void setIdentifier(FloorIdentifier identifier) {
         this.identifier = identifier;
-    }
-
-    public Set<Wing> getWings() {
-        return wings;
-    }
-
-    public Floor wings(Set<Wing> wings) {
-        this.wings = wings;
-        return this;
-    }
-
-    public Floor addWing(Wing wing) {
-        this.wings.add(wing);
-        wing.setFloor(this);
-        return this;
-    }
-
-    public Floor removeWing(Wing wing) {
-        this.wings.remove(wing);
-        wing.setFloor(null);
-        return this;
-    }
-
-    public void setWings(Set<Wing> wings) {
-        this.wings = wings;
     }
 
     public Building getBuilding() {
