@@ -33,8 +33,8 @@
 
 <section class="mt-2">
   <hr />
-  <p>Folgende Sitzpläte sind frei:</p>
-  <ng-container *ngIf="dataSource$ | async as dataSource">
+  <div [hidden]="!loaded">
+    <p>Folgende Sitzpläte sind frei:</p>
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="building">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gebäude</th>
@@ -56,11 +56,20 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="deskgroup">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sitzgruppe</th>
-        <td mat-cell *matCellDef="let element">{{ element.deskgroup }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.deskgroup }}<mat-icon (click)="onShowSeatPlan(element.deskgroup)">info</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action-buttons">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <button type="button" class="btn btn-sm btn-success" (click)="onMakeReservationClick(element)">Reservieren</button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-  </ng-container>
+  </div>
 </section>
