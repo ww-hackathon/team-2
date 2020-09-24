@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ThresholdService } from './threshold.service';
+/* eslint-disable */
 
 @Component({
   selector: 'jhi-admin',
