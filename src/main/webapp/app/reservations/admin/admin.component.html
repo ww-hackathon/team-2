@@ -8,8 +8,8 @@
     <section class="wrapper">
         <label for="update-threshold-input"><h6>Update the threshold</h6></label>
         <div class="input-group mb-3">
-            <input placeholder="Current Value" type="number" class="form-control" id="update-threshold-input" aria-describedby="basic-addon3">
+            <input placeholder="Current Value" (input)="onThresholdInput($event)" type="number" class="form-control" id="update-threshold-input" aria-describedby="basic-addon3">
         </div>
-        <button type="button" class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-primary" (click)="updateThresholdValue()">Update</button>
     </section>
 </div>
