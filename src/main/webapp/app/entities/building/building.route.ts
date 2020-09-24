@@ -30,7 +30,7 @@ export class BuildingResolve implements Resolve<IBuilding> {
         })
       );
     }
-    return of(new Building());
+    return of(new Building(0, 0));
   }
 }
 

@@ -1,1 +1,74 @@
-<p>new-reservation works!</p>
+<h2>Neue Reservierung</h2>
+<section class="flex-column" *ngIf="buildings$ | async as buildings; else loading">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>Von wann bis wann brauchen Sie einen Sitzplatz?</p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Von bis</mat-label>
+        <mat-date-range-input [rangePicker]="picker" [dateFilter]="dateFilter">
+          <input matStartDate formControlName="startDate" placeholder="Anfang" />
+          <input matEndDate formControlName="endDate" placeholder="Ende" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="form.controls.startDate.hasError('minDate')">Anfang darf nicht in der Vergangenheit liegen.</mat-error>
+        <mat-error *ngIf="form.controls.endDate.hasError('max')">Es darf nur 1 Woche im Voraus reserviert werden.</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>Wo brauchen Sie einen Sitzplatz?</p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Gebäude</mat-label>
+        <mat-select formControlName="building" multiple>
+          <mat-option *ngFor="let building of buildings" [value]="building.id">{{ 'C' + building.identifier }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <button type="submit" class="btn btn-primary">Suchen</button>
+  </form>
+</section>
+
+<section class="mt-2">
+  <hr />
+  <div [hidden]="!loaded">
+    <p>Folgende Sitzpläte sind frei:</p>
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="building">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gebäude</th>
+        <td mat-cell *matCellDef="let element">{{ element.building }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="wing">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Flügel</th>
+        <td mat-cell *matCellDef="let element">{{ element.wing }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="floor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock</th>
+        <td mat-cell *matCellDef="let element">{{ element.floor }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="deskgroup">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sitzgruppe</th>
+        <td mat-cell *matCellDef="let element">{{ element.deskgroup }}<mat-icon (click)="onShowSeatPlan(element)">info</mat-icon></td>
+      </ng-container>
+
+      <ng-container matColumnDef="action-buttons">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <button type="button" class="btn btn-sm btn-success" (click)="onMakeReservationClick(element)">Reservieren</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</section>
+
+<ng-template #loading>
+  Lade Daten...
+</ng-template>

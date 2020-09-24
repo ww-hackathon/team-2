@@ -1,1 +1,29 @@
-<p>admin works!</p>
+<div class="page-wrapper">
+  <header>
+    <h2>
+      Admin Threshold
+    </h2>
+  </header>
+
+  <section class="wrapper">
+    <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label>
+          <h6>Update the threshold</h6>
+        </label>
+        <input class="form-control" formControlName="threshold" type="text" />
+      </div>
+      <div
+        *ngIf="angForm.controls['threshold']?.invalid && (angForm.controls['threshold']?.dirty || angForm.controls['threshold']?.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="angForm.controls['threshold']?.errors.required">
+          Threshold is required.
+        </div>
+      </div>
+      <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+        Update
+      </button>
+    </form>
+  </section>
+</div>

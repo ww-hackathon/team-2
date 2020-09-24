@@ -10,7 +10,7 @@ describe('Component Tests', () => {
   describe('Building Management Detail Component', () => {
     let comp: BuildingDetailComponent;
     let fixture: ComponentFixture<BuildingDetailComponent>;
-    const route = ({ data: of({ building: new Building(123) }) } as any) as ActivatedRoute;
+    const route = ({ data: of({ building: new Building(123, 11) }) } as any) as ActivatedRoute;
 
     beforeEach(() => {
       TestBed.configureTestingModule({

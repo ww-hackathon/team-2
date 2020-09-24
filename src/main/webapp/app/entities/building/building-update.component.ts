@@ -50,10 +50,10 @@ export class BuildingUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IBuilding {
+    const id = this.editForm.get(['id'])!.value;
+    const identifier = this.editForm.get(['identifier'])!.value;
     return {
-      ...new Building(),
-      id: this.editForm.get(['id'])!.value,
-      identifier: this.editForm.get(['identifier'])!.value,
+      ...new Building(id, identifier),
     };
   }
 

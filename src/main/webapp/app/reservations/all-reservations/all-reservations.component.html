@@ -1,1 +1,42 @@
-<p>all-reservations works!</p>
+<h2>Meine Reservierungen</h2>
+
+<section class="mt-2">
+    <ng-container *ngIf="dataSource">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="building">
+                <th mat-header-cell *matHeaderCellDef>Gebäude</th>
+                <td mat-cell *matCellDef="let element">{{ element.building }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="wing">
+                <th mat-header-cell *matHeaderCellDef >Flügel</th>
+                <td mat-cell *matCellDef="let element">{{ element.wing }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="floor">
+                <th mat-header-cell *matHeaderCellDef>Stock</th>
+                <td mat-cell *matCellDef="let element">{{ element.floor }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="deskgroup">
+                <th mat-header-cell *matHeaderCellDef>Sitzgruppe</th>
+                <td mat-cell *matCellDef="let element">{{ element.deskgroup }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Datum</th>
+                <td mat-cell *matCellDef="let element">{{ element.date | date }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action-buttons">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <button type="button" class="btn btn-sm btn-danger" (click)="onDeleteReservationClick(element)">Stornieren</button>
+                </td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </ng-container>
+</section>

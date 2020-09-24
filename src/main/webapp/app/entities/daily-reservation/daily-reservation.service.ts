@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -70,5 +70,38 @@ export class DailyReservationService {
       });
     }
     return res;
+  }
+
+  getDummyAvailableReservations(): Observable<IDailyReservation[]> {
+    return of([
+      {
+        id: 1,
+        building: '11',
+        floor: 0,
+        wing: 'A',
+        deskgroup: 1,
+      },
+      {
+        id: 1,
+        building: '11',
+        floor: 0,
+        wing: 'A',
+        deskgroup: 2,
+      },
+      {
+        id: 1,
+        building: '11',
+        floor: 0,
+        wing: 'A',
+        deskgroup: 3,
+      },
+      {
+        id: 2,
+        building: '11',
+        floor: 1,
+        wing: 'B',
+        deskgroup: 2,
+      },
+    ]);
   }
 }
