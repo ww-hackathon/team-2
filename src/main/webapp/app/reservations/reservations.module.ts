@@ -17,9 +17,16 @@ import { AllReservationsComponent } from './all-reservations/all-reservations.co
 import { ReservationsAdminComponent } from './admin/admin.component';
 import { CustomDatePickerAdapter } from '../shared/util/mat-datepicker-adapter';
 import { SeatPlanComponent } from './new-reservation/seat-plan/seat-plan.component';
+import { ReservationDeleteDialogComponent } from './all-reservations/reservation-delete-dialog/reservation-delete-dialog.component';
 
 @NgModule({
-  declarations: [NewReservationComponent, AllReservationsComponent, ReservationsAdminComponent, SeatPlanComponent],
+  declarations: [
+    NewReservationComponent,
+    AllReservationsComponent,
+    ReservationsAdminComponent,
+    SeatPlanComponent,
+    ReservationDeleteDialogComponent,
+  ],
   imports: [
     CommonModule,
     ReservationsRoutingModule,
