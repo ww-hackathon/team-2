@@ -7,6 +7,7 @@ import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/mate
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 
 import { ReservationsRoutingModule } from './reservations-routing.module';
 import { NewReservationComponent } from './new-reservation/new-reservation.component';
@@ -25,6 +26,7 @@ import { CustomDatePickerAdapter } from '../shared/util/mat-datepicker-adapter';
     MatIconModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatTableModule,
     ReactiveFormsModule,
   ],
   providers: [
