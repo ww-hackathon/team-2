@@ -67,11 +67,11 @@ export class NewReservationComponent implements OnInit {
       .subscribe();
   }
 
-  onShowSeatPlan(deskgroup: number, wing: string) {
+  onShowSeatPlan(reservation: IDailyReservation) {
+    console.log(reservation);
     this.dialog.open(SeatPlanComponent, {
       data: {
-        highlighted: deskgroup,
-        wing,
+        reservation,
       },
     });
   }

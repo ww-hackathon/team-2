@@ -1,5 +1,5 @@
 <h2>Neue Reservierung</h2>
-<section class="flex-column">
+<section class="flex-column" *ngIf="buildings$ | async as buildings; else loading">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <p>Von wann bis wann brauchen Sie einen Sitzplatz?</p>
     <p>
@@ -19,7 +19,7 @@
 
     <p>Wo brauchen Sie einen Sitzplatz?</p>
     <p>
-      <mat-form-field appearance="fill" *ngIf="buildings$ | async as buildings">
+      <mat-form-field appearance="fill">
         <mat-label>Gebäude</mat-label>
         <mat-select formControlName="building" multiple>
           <mat-option *ngFor="let building of buildings" [value]="building.id">{{ 'C' + building.identifier }}</mat-option>
@@ -41,24 +41,19 @@
         <td mat-cell *matCellDef="let element">{{ element.building }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="wing">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Flügel</th>
         <td mat-cell *matCellDef="let element">{{ element.wing }}</td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="floor">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock</th>
         <td mat-cell *matCellDef="let element">{{ element.floor }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="deskgroup">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Sitzgruppe</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.deskgroup }}<mat-icon (click)="onShowSeatPlan(element.deskgroup, element.wing)">info</mat-icon>
-        </td>
+        <td mat-cell *matCellDef="let element">{{ element.deskgroup }}<mat-icon (click)="onShowSeatPlan(element)">info</mat-icon></td>
       </ng-container>
 
       <ng-container matColumnDef="action-buttons">
@@ -73,3 +68,7 @@
     </table>
   </div>
 </section>
+
+<ng-template #loading>
+  Lade Daten...
+</ng-template>

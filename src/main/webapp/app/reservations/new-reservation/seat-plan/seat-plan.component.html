@@ -1,5 +1,9 @@
+<h2>
+  Lageplan C{{ data.reservation?.building }}.{{ data.reservation?.floor }}.{{ data.reservation?.wing }}.{{ data.reservation?.deskgroup }}
+</h2>
+
 <svg
-  *ngIf="data.wing === 'A'"
+  *ngIf="data.reservation.wing === 'A'"
   version="1.1"
   id="Ebene_2"
   xmlns="http://www.w3.org/2000/svg"
@@ -20,49 +24,49 @@
     points="228.262,41.851 229.894,488.7 
 	807.136,488.7 807.338,200.5 519.541,200.5 518.969,41.66 227,41.757 "
   />
-  <g id="deskgroup-1" [class.highlighted]="data.highlighted === 1">
+  <g id="deskgroup-1" [class.highlighted]="data.reservation.deskgroup === 1">
     <rect x="555.904" y="214.336" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="572.979" y="214.336" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="572.979" y="247.62" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="555.904" y="247.62" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
   </g>
-  <g id="deskgroup-2" [class.highlighted]="data.highlighted === 2">
+  <g id="deskgroup-2" [class.highlighted]="data.reservation.deskgroup === 2">
     <rect x="759.971" y="234.191" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.074" />
     <rect x="759.971" y="251.266" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.074" />
     <rect x="726.686" y="251.266" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.074" />
     <rect x="726.686" y="234.191" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.074" />
   </g>
-  <g id="deskgroup-3" [class.highlighted]="data.highlighted === 3">
+  <g id="deskgroup-3" [class.highlighted]="data.reservation.deskgroup === 3">
     <rect x="759.971" y="327.857" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.074" />
     <rect x="759.971" y="344.932" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.074" />
     <rect x="726.686" y="344.932" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.074" />
     <rect x="726.686" y="327.857" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.074" />
   </g>
-  <g id="deskgroup-4" [class.highlighted]="data.highlighted === 4">
+  <g id="deskgroup-4" [class.highlighted]="data.reservation.deskgroup === 4">
     <rect x="759.971" y="420.402" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.073" />
     <rect x="759.971" y="437.476" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.284" height="17.075" />
     <rect x="726.686" y="437.476" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.075" />
     <rect x="726.686" y="420.402" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.285" height="17.073" />
   </g>
-  <g id="deskgroup-5" [class.highlighted]="data.highlighted === 5">
+  <g id="deskgroup-5" [class.highlighted]="data.reservation.deskgroup === 5">
     <rect x="553.854" y="407.551" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="570.928" y="407.551" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="570.928" y="440.836" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="553.854" y="440.836" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
   </g>
-  <g id="deskgroup-6" [class.highlighted]="data.highlighted === 6">
+  <g id="deskgroup-6" [class.highlighted]="data.reservation.deskgroup === 6">
     <rect x="460.587" y="407.551" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="477.661" y="407.551" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="477.661" y="440.836" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="460.587" y="440.836" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
   </g>
-  <g id="deskgroup-7" [class.highlighted]="data.highlighted === 7">
+  <g id="deskgroup-7" [class.highlighted]="data.reservation.deskgroup === 7">
     <rect x="364.957" y="407.551" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="382.031" y="407.551" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.285" />
     <rect x="382.031" y="440.836" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
     <rect x="364.957" y="440.836" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="17.074" height="33.284" />
   </g>
-  <g id="deskgroup-8" [class.highlighted]="data.highlighted === 8">
+  <g id="deskgroup-8" [class.highlighted]="data.reservation.deskgroup === 8">
     <rect x="246.417" y="313.09" stroke="#000000" stroke-miterlimit="10" width="43.243" height="16.961" />
     <rect x="246.417" y="330.051" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="43.243" height="16.961" />
   </g>
@@ -101,7 +105,7 @@
 </svg>
 
 <svg
-  *ngIf="data.wing === 'B'"
+  *ngIf="data.reservation.wing === 'B'"
   version="1.1"
   id="Ebene_1"
   xmlns="http://www.w3.org/2000/svg"
@@ -128,49 +132,49 @@
   <rect x="189.967" y="350.643" fill="none" stroke="#070707" stroke-width="2" stroke-miterlimit="10" width="114.032" height="92.211" />
   <rect x="417.729" y="269.358" fill="none" stroke="#070707" stroke-width="2" stroke-miterlimit="10" width="65.429" height="54.759" />
   <rect x="352.301" y="269.409" fill="none" stroke="#070707" stroke-width="2" stroke-miterlimit="10" width="65.429" height="54.758" />
-  <g id="deskgroup-8" [class.highlighted]="data.highlighted === 8">
+  <g id="deskgroup-8" [class.highlighted]="data.reservation.deskgroup === 8">
     <rect x="352.301" y="359.238" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.084" />
     <rect x="369.272" y="359.238" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.084" />
     <rect x="369.272" y="392.322" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.085" />
     <rect x="352.301" y="392.322" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.085" />
   </g>
-  <g id="deskgroup-7" [class.highlighted]="data.highlighted === 7">
+  <g id="deskgroup-7" [class.highlighted]="data.reservation.deskgroup === 7">
     <rect x="449.214" y="359.238" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.084" />
     <rect x="466.186" y="359.238" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="16.973" height="33.084" />
     <rect x="466.186" y="392.322" stroke="#000000" stroke-miterlimit="10" width="16.973" height="33.085" />
     <rect x="449.214" y="392.322" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.085" />
   </g>
-  <g id="deskgroup-6" [class.highlighted]="data.highlighted === 6">
+  <g id="deskgroup-6" [class.highlighted]="data.reservation.deskgroup === 6">
     <rect x="654.065" y="372.563" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.974" />
     <rect x="654.065" y="389.536" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.972" />
     <rect x="620.981" y="389.536" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.972" />
     <rect x="620.981" y="372.563" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.974" />
   </g>
-  <g id="deskgroup-5" [class.highlighted]="data.highlighted === 5">
+  <g id="deskgroup-5" [class.highlighted]="data.reservation.deskgroup === 5">
     <rect x="654.065" y="279.816" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.972" />
     <rect x="654.065" y="296.788" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.973" />
     <rect x="620.981" y="296.788" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.973" />
     <rect x="620.981" y="279.816" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.972" />
   </g>
-  <g id="deskgroup-4" [class.highlighted]="data.highlighted === 4">
+  <g id="deskgroup-4" [class.highlighted]="data.reservation.deskgroup === 4">
     <rect x="654.065" y="187.828" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.971" />
     <rect x="654.065" y="204.799" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="33.085" height="16.973" />
     <rect x="620.981" y="204.799" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.973" />
     <rect x="620.981" y="187.828" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="33.084" height="16.971" />
   </g>
-  <g id="deskgroup-3" [class.highlighted]="data.highlighted === 3">
+  <g id="deskgroup-3" [class.highlighted]="data.reservation.deskgroup === 3">
     <rect x="466.186" y="201.331" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.085" />
     <rect x="449.214" y="201.331" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.085" />
     <rect x="449.214" y="168.247" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.084" />
     <rect x="466.186" y="168.247" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="16.972" height="33.084" />
   </g>
-  <g id="deskgroup-2" [class.highlighted]="data.highlighted === 2">
+  <g id="deskgroup-2" [class.highlighted]="data.reservation.deskgroup === 2">
     <rect x="369.272" y="201.331" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.085" />
     <rect x="352.3" y="201.331" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="16.973" height="33.085" />
     <rect x="352.3" y="168.247" stroke="#000000" stroke-miterlimit="10" width="16.973" height="33.084" />
     <rect x="369.272" y="168.247" fill="#111111" stroke="#000000" stroke-miterlimit="10" width="16.971" height="33.084" />
   </g>
-  <g id="deskgroup-1" [class.highlighted]="data.highlighted === 1">
+  <g id="deskgroup-1" [class.highlighted]="data.reservation.deskgroup === 1">
     <rect x="180.906" y="170.331" stroke="#000000" stroke-miterlimit="10" width="16.859" height="34.994" />
     <rect x="197.765" y="170.331" fill="#161616" stroke="#000000" stroke-miterlimit="10" width="16.86" height="34.994" />
   </g>
