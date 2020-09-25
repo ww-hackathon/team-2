@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { ReservationsRoutingModule } from './reservations-routing.module';
 import { NewReservationComponent } from './new-reservation/new-reservation.component';
@@ -18,6 +19,7 @@ import { ReservationsAdminComponent } from './admin/admin.component';
 import { CustomDatePickerAdapter } from '../shared/util/mat-datepicker-adapter';
 import { SeatPlanComponent } from './new-reservation/seat-plan/seat-plan.component';
 import { ReservationDeleteDialogComponent } from './all-reservations/reservation-delete-dialog/reservation-delete-dialog.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,10 @@ import { ReservationDeleteDialogComponent } from './all-reservations/reservation
     MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
+    MatChipsModule,
     MatSortModule,
     MatIconModule,
+    MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
   ],

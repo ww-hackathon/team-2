@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
+import { Reservation } from '../reservation.interface';
 
 @Component({
   selector: 'jhi-seat-plan',
@@ -8,7 +8,7 @@ import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
   styleUrls: ['./seat-plan.component.scss'],
 })
 export class SeatPlanComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { reservation: IDailyReservation }) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { reservation: Reservation }) {}
 
   ngOnInit(): void {}
 }

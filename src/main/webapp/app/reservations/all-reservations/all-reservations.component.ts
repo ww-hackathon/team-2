@@ -12,7 +12,7 @@ import { ReservationDeleteDialogComponent } from './reservation-delete-dialog/re
   styleUrls: ['./all-reservations.component.scss'],
 })
 export class AllReservationsComponent implements OnInit {
-  displayedColumns = ['building', 'floor', 'wing', 'deskgroup', 'date', 'action-buttons'];
+  displayedColumns = ['date', 'action-buttons'];
 
   onDeleteReservationClick(element: IDailyReservation) {
     console.log(element);

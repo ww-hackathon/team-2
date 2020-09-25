@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
@@ -8,6 +8,7 @@ import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IDailyReservation } from 'app/shared/model/daily-reservation.model';
+import { Reservation } from '../../reservations/new-reservation/reservation.interface';
 
 type EntityResponseType = HttpResponse<IDailyReservation>;
 type EntityArrayResponseType = HttpResponse<IDailyReservation[]>;
@@ -23,6 +24,10 @@ export class DailyReservationService {
     return this.http
       .post<IDailyReservation>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  createNewReservation(reservation: any): Observable<any> {
+    return this.http.post<Reservation>(this.resourceUrl, reservation);
   }
 
   update(dailyReservation: IDailyReservation): Observable<EntityResponseType> {
@@ -43,6 +48,20 @@ export class DailyReservationService {
     return this.http
       .get<IDailyReservation[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  getOpenReservations(startDate: Date, endDate: Date): Observable<Reservation[]> {
+    const startDateFormatted = startDate.toISOString().slice(0, 10);
+    const endDateFormatted = endDate.toISOString().slice(0, 10);
+
+    // Initialize Params Object
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+    params = params.append('startDate', startDateFormatted);
+    params = params.append('endDate', endDateFormatted);
+
+    return this.http.get<Reservation[]>('api/reservation', { params });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
