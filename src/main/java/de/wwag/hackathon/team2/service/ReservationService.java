@@ -81,6 +81,7 @@ public class ReservationService {
             for (Map.Entry<Long, Integer> entry : map.entrySet()) {
                 Deskgroup deskgroup = deskgroupRepository.findById(entry.getKey()).get();
                 int roundedValue = (int) Math.floor(deskgroup.getSeats() * threshold);
+                System.err.println("VALUES____________________" + roundedValue + " " + entry.getValue());
                 if (entry.getValue() >= roundedValue) {
                     list.add(entry.getKey());
                 }

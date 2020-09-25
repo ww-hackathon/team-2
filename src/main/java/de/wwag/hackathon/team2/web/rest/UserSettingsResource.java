@@ -2,7 +2,6 @@ package de.wwag.hackathon.team2.web.rest;
 
 import de.wwag.hackathon.team2.service.UserSettingsService;
 import de.wwag.hackathon.team2.service.dto.DailyReservationDTO;
-import de.wwag.hackathon.team2.service.dto.DetailedDeskgroupDTO;
 import de.wwag.hackathon.team2.service.mapper.DailyReservationMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +22,8 @@ public class UserSettingsResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<DetailedDeskgroupDTO>> getDailyReservation() {
-        return ResponseEntity.ok(userSettingsService.getAllDailyReservationsForUser());
+    public ResponseEntity<List<DailyReservationDTO>> getDailyReservation() {
+        return ResponseEntity.ok(dailyReservationMapper.toDto(userSettingsService.getAllDailyReservationsForUser()));
     }
 
     @PostMapping
