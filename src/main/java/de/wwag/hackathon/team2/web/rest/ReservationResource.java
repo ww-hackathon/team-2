@@ -30,7 +30,16 @@ public class ReservationResource {
     public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
 
 
+
         return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam List<Integer> buildings) {
+
+
+
+        return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate, buildings));
     }
 
 }

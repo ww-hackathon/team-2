@@ -114,4 +114,20 @@ public class ReservationService {
         });
         return availableDeskgroupDTOS;
     }
+
+    public List<DetailedDeskgroupDTO> getAvailableDeskgroupsInDateSpan(LocalDate startDate, LocalDate endDate, List<Integer> buildings) {
+        List<DetailedDeskgroupDTO> availableDeskgroupDTOS = new ArrayList<>();
+        List<Deskgroup> freeDeskgroups = getFreeDeskgroupsInDateSpan(startDate, endDate);
+        freeDeskgroups.forEach(deskgroup -> {
+            if(buildings.contains(deskgroup.getWing().getFloor().getBuilding().getIdentifier())) {
+                availableDeskgroupDTOS.add(new DetailedDeskgroupDTO(
+                    buildingMapper.toDto(deskgroup.getWing().getFloor().getBuilding()),
+                    floorMapper.toDto(deskgroup.getWing().getFloor()),
+                    wingMapper.toDto(deskgroup.getWing()),
+                    deskgroupMapper.toDto(deskgroup)
+                ));
+            }
+        });
+        return availableDeskgroupDTOS;
+    }
 }
