@@ -6,7 +6,6 @@ import de.wwag.hackathon.team2.repository.DailyReservationRepository;
 import de.wwag.hackathon.team2.web.rest.errors.BadRequestAlertException;
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.h2.message.DbException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
