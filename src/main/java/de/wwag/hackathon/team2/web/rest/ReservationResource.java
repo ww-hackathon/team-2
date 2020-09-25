@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,21 +26,10 @@ public class ReservationResource {
         this.reservationService = reservationService;
     }
 
-
     @GetMapping
-    public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
-
-
-
-        return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam List<Integer> buildings) {
-
-
-
-        return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate, buildings));
+    public ResponseEntity<List<DetailedDeskgroupDTO>> getReservations(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam(required = false) List<Integer> buildings) {
+        List<Integer> dummy = new ArrayList<>();
+        return ResponseEntity.ok(reservationService.getAvailableDeskgroupsInDateSpan(startDate, endDate, (buildings == null) ? dummy : buildings));
     }
 
 }
